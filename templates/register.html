@@ -1,13 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> Register Page</title>
+    <title>Register Page</title>
 </head>
+
 <body>
-    <h1> Register Page </h1>
-    <a href="{{url_for('login')}}"> Already have an account ? Register</a>
-    
+    <h1>Register Page</h1>
+    <form method="POST" action="">
+        {{ form.hidden_tag() }}
+        <label for="username">Username:</label>
+        {{ form.username }}
+        {% for error in form.username.errors %}
+            <p style="color: red;">{{ error }}</p>
+        {% endfor %}
+        <br>
+        <label for="password">Password:</label>
+        {{ form.password }}
+        {% for error in form.password.errors %}
+            <p style="color: red;">{{ error }}</p>
+        {% endfor %}
+        <br>
+        {{ form.submit }}
+    </form>
+    <br>
+    <br>
+    <a href="{{ url_for('login') }}">Already have an account? Login</a>
 </body>
+
 </html>
